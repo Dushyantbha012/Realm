@@ -1,3 +1,4 @@
 const PORT = 3000
 const connectionUrl = "";
-module.exports = {PORT,connectionUrl};
+const SECRET_KEY="";
+module.exports = {PORT,connectionUrl,SECRET_KEY};
