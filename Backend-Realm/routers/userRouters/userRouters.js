@@ -13,16 +13,18 @@ const userSchema = z.object({
   GraduationYear: z.number(),
   SID: z.string(),
   Email: z.string().email(),
+  Password:z.string(),
 });
 UserRouters.post("/signup", async (req, res) => {
   const reqUser = {
-    Name: req.Name,
-    UserName: req.UserName,
-    College: req.College,
-    Branch: req.Branch,
-    GraduationYear: req.GraduationYear,
-    SID: req.SID,
-    Email: req.Email,
+    Name: req.body.Name,
+    UserName: req.body.UserName,
+    College: req.body.College,
+    Branch: req.body.Branch,
+    GraduationYear: req.body.GraduationYear,
+    SID: req.body.SID,
+    Email: req.body.Email,
+    Password: req.body.Password,
   };
   try {
     const { success } = userSchema.safeParse(reqUser);
@@ -50,5 +52,29 @@ UserRouters.post("/signup", async (req, res) => {
     token:token
   })
 });
+
+const signInSchema = z.object({
+    UserName:z.string(),
+    Password:z.string(),
+
+})
+
+UserRouters.post("/signin", async(req,res)=>{
+    const reqUser = {
+        Username:req.body.UserName,
+        Password:req.body.Password,
+    }
+    const {success}= signInSchema.safeParse(reqUser)
+    if(!success){
+        return res.status(411).json({message:"Invalid Input"});
+    }
+    const user = await User.findOne({reqUser});
+    if(!user){
+        return res.status(404).json({message:"Sign Up|| User doesn't exist"});
+    }
+    const token = jwt.sign({UserId:user._id},SECRET_KEY);
+    res.json({message:"Signed In Successfully !!!!", token:token});
+    return;
+})
 
 module.exports = UserRouters;
