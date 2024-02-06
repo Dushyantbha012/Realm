@@ -19,7 +19,7 @@ const initializeSocketIO = (server, namespace) => {
         const room = await Room.findOne({ roomId: roomId });
         const initialChats = room.chats;
         socket.emit("initialChats", initialChats);
-      } else {
+      } else { socket.emit("initialChats",[])
       }
     });
     socket.on("message", (msgData) => {
