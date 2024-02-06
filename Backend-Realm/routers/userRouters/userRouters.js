@@ -1,6 +1,6 @@
 import express from "express";
 import { User } from "../../DataBase/db";
-const UserRouters = express.Router();
+const userRouters = express.Router();
 import { z } from "zod";
 const jwt = require("jsonwebtoken");
 import { SECRET_KEY } from "../../config";
@@ -8,25 +8,25 @@ import { SECRET_KEY } from "../../config";
 //Sign Up
 
 const userSchema = z.object({
-  Name: z.string(),
-  UserName: z.string(),
-  College: z.string(),
-  Branch: z.string(),
-  GraduationYear: z.number(),
+  name: z.string(),
+  username: z.string(),
+  college: z.string(),
+  branch: z.string(),
+  graduationYear: z.number(),
   SID: z.string(),
-  Email: z.string().email(),
-  Password:z.string(),
+  email: z.string().email(),
+  password:z.string(),
 });
-UserRouters.post("/signup", async (req, res) => {
+userRouters.post("/signup", async (req, res) => {
   const reqUser = {
-    Name: req.body.Name,
-    UserName: req.body.UserName,
-    College: req.body.College,
-    Branch: req.body.Branch,
-    GraduationYear: req.body.GraduationYear,
+    name: req.body.name,
+    username: req.body.username,
+    college: req.body.college,
+    branch: req.body.branch,
+    graduationYear: req.body.graduationYear,
     SID: req.body.SID,
-    Email: req.body.Email,
-    Password: req.body.Password,
+    email: req.body.email,
+    password: req.body.password,
   };
   try {
     const { success } = userSchema.safeParse(reqUser);
@@ -38,9 +38,9 @@ UserRouters.post("/signup", async (req, res) => {
   }
   const existingUser = await User.findOne({
     $or: [
-      { UserName: reqUser.UserName },
-      { Email: reqUser.Email },
-      { $and: [{ college: college }, { rollNo: rollNo }] },
+      { userName: reqUser.userName },
+      { email: reqUser.email },
+      { $and: [{ college: college }, { SID: SID }] },
     ],
   });
   if(existingUser){
@@ -58,15 +58,15 @@ UserRouters.post("/signup", async (req, res) => {
 //Sign In
 
 const signInSchema = z.object({
-    UserName:z.string(),
-    Password:z.string(),
+    username:z.string(),
+    password:z.string(),
 
 })
 
-UserRouters.post("/signin", async(req,res)=>{
+userRouters.post("/signin", async(req,res)=>{
     const reqUser = {
-        Username:req.body.UserName,
-        Password:req.body.Password,
+        username:req.body.userName,
+        password:req.body.password,
     }
     const {success}= signInSchema.safeParse(reqUser)
     if(!success){
@@ -81,4 +81,4 @@ UserRouters.post("/signin", async(req,res)=>{
     return;
 })
 
-module.exports = UserRouters;
+module.exports = userRouters;
