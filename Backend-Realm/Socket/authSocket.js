@@ -3,7 +3,7 @@ import {SECRET_KEY} from('../config')
 
 const authSocket = (socket,next)=>{
     const {token}= socket.handshake.query;
-    if(!authHeader){
+    if(!token){
         console.log("auth failed 1")
         return 
     }
