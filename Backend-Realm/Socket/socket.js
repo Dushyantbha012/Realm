@@ -13,7 +13,7 @@ const initializeSocketIO = (server, namespace) => {
 
   io.on("connection", (socket) => {
     socket.on("joinRoom", async (roomJoinData) => {
-      if (joinRoomMiddleWare(roomJoinData)) {
+      if (joinRoomMiddleWare(socket,roomJoinData)) {
         const { roomId } = roomJoinData;
         socket.join(roomID);
         const room = await Room.findOne({ roomId: roomId });
