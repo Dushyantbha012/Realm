@@ -1,7 +1,5 @@
 import mongoose from "mongoose"
 import {connectionUrl} from "../config"
-import { timeStamp } from "console";
-import { PassThrough } from "stream";
 mongoose.connect(connectionUrl)
 
 const userSchema = new mongoose.Schema({
