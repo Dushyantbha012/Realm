@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
 });
 
 const roomSchema = new mongoose.Schema({
-    roomID:String,
+    roomId:String,
     users:[{
         type:mongoose.Schema.Types.ObjectId,
         ref:"User"
@@ -31,7 +31,7 @@ const roomSchema = new mongoose.Schema({
         message:String,
         sender:{
             name:String,
-            userID:{type:mongoose.Schema.Types.ObjectId, ref:"User"}
+            userId:{type:mongoose.Schema.Types.ObjectId, ref:"User"}
         },
         timeStamp:{type:Date, default:Date.now},
     }]

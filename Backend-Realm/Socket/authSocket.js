@@ -8,8 +8,8 @@ const authSocket = (socket,next)=>{
         return 
     }
     try {
-        const decoded = jwt.verify(authHeader, SECRET_KEY);
-        socket.request.userID = decoded.userID;
+        const decoded = jwt.verify(token, SECRET_KEY);
+        socket.request.userId = decoded.userId;
         next()
     } catch (err) {
         console.log("auth failed 2")
