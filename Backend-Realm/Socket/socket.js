@@ -5,7 +5,11 @@ const initializeSocketIO = (server,namespace)=>{
     const io = SocketIO(server,{
         path:namespace,
     });
-    io.use(authSocket);
+
+
+    io.use(authSocket);//authentication
+
+
     io.on("connection",(socket)=>{
         socket.on("joinRoom",(roomJoinData)=>{
             socket.join(roomJoinData.roomID);

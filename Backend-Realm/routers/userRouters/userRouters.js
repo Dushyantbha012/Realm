@@ -5,6 +5,8 @@ import { z } from "zod";
 const jwt = require("jsonwebtoken");
 import { SECRET_KEY } from "../../config";
 
+//Sign Up
+
 const userSchema = z.object({
   Name: z.string(),
   UserName: z.string(),
@@ -52,6 +54,8 @@ UserRouters.post("/signup", async (req, res) => {
     token:token
   })
 });
+
+//Sign In
 
 const signInSchema = z.object({
     UserName:z.string(),
