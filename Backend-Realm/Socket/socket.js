@@ -26,7 +26,9 @@ const initializeSocketIO = (server, namespace) => {
       const room= await Room.findOneAndUpdate({roomId:msgData.roomId},{$push:{chats:msgData.chat}}).exec();
       io.to(msgData.roomId).emit("receive_message",msgData.chat);
     });
-    socket.on("disconnect", () => {});
+    socket.on("disconnect", () => {
+      console.log("Dissconnect socket id", socket.id)
+    });
   });
 };
 
