@@ -1,4 +1,4 @@
-import Room from "../DataBase/db"
+const Room =require( "../DataBase/db")
 
 const joinRoomMiddleWare = async(socket,roomJoinData)=>{
     try{

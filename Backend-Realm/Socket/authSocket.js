@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken")
-import {SECRET_KEY} from('../config')
+const {SECRET_KEY} =require('../config')
 
 const authSocket = (socket,next)=>{
     const {token}= socket.handshake.query;

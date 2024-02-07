@@ -1,10 +1,10 @@
-import express from "express"
-import cors from "cors"
-import {PORT} from "./config"
-import router from "./routers/router"
-import http from "http"
-import initializeSocketIO from "./Socket/socket"
-
+const express = require("express")
+const cors = require("cors")
+const {PORT} = require("./config")
+const router = require("./routers/router")
+const http = require("http")
+const initializeSocketIO = require("./Socket/socket"
+)
 const app = express();
 app.use(cors());
 app.use(express.json()); //may create error for chatserver

@@ -1,7 +1,7 @@
 const SocketIO = require("socket.io");
-import authSocket from "./authSocket";
-import { Room, User } from "../DataBase/db";
-import joinRoomMiddleWare from "./joinRoomMiddleWare";
+const authSocket = require("./authSocket");
+const { Room, User } = require("../DataBase/db");
+const joinRoomMiddleWare = require("./joinRoomMiddleWare");
 
 const initializeSocketIO = (server, namespace) => {
   const io = SocketIO(server, {

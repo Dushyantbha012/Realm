@@ -1,5 +1,5 @@
-import mongoose from "mongoose"
-import {connectionUrl} from "../config"
+const mongoose = require("mongoose")
+const {connectionUrl} = require("../config")
 mongoose.connect(connectionUrl)
 
 const userSchema = new mongoose.Schema({
@@ -35,7 +35,7 @@ const roomSchema = new mongoose.Schema({
     }]
 })
 
-const User = mongoose.model(userSchema);
-const Room = mongoose.model(roomSchema);
+const User = mongoose.model("User",userSchema);
+const Room = mongoose.model("Room",roomSchema);
 
 module.exports = {User,Room};

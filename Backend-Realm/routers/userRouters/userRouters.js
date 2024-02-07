@@ -1,9 +1,10 @@
-import express from "express";
-import { User } from "../../DataBase/db";
+const express = require("express");
+const { User } = require("../../DataBase/db");
 const userRouters = express.Router();
-import { z } from "zod";
+const { z } = require("zod");
 const jwt = require("jsonwebtoken");
-import { SECRET_KEY } from "../../config";
+const { SECRET_KEY } = require("../../config");
+const { authMiddleware } = require("../authMiddleware/authMiddleware");
 
 //Sign Up
 
@@ -29,6 +30,7 @@ userRouters.post("/signup", async (req, res) => {
     password: req.body.password,
   };
   try {
+    console.log("request reached",req.body);
     const { success } = userSchema.safeParse(reqUser);
     if (!success) {
       return res.status(403).json({ message: "invalid input" });
@@ -40,7 +42,7 @@ userRouters.post("/signup", async (req, res) => {
     $or: [
       { userName: reqUser.userName },
       { email: reqUser.email },
-      { $and: [{ college: college }, { SID: SID }] },
+      { $and: [{ college: reqUser.college }, { SID: reqUser.SID }] },
     ],
   });
   if(existingUser){
@@ -65,20 +67,24 @@ const signInSchema = z.object({
 
 userRouters.post("/signin", async(req,res)=>{
     const reqUser = {
-        username:req.body.userName,
+        username:req.body.username,
         password:req.body.password,
     }
     const {success}= signInSchema.safeParse(reqUser)
     if(!success){
         return res.status(411).json({message:"Invalid Input"});
     }
-    const user = await User.findOne({reqUser});
+    const user = await User.findOne(reqUser);
     if(!user){
         return res.status(404).json({message:"Sign Up|| User doesn't exist"});
     }
     const token = jwt.sign({UserId:user._id},SECRET_KEY);
     res.json({message:"Signed In Successfully !!!!", token:token});
     return;
+})
+
+userRouters.get("/hello",authMiddleware,(req,res)=>{
+  res.json({message:"hello"})
 })
 
 module.exports = userRouters;
