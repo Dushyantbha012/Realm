@@ -97,11 +97,6 @@ userRouters.get("/profile",authMiddleware,async (req,res)=>{
   };
   res.json(profile);
 })
-userRouters.get("/chatRooms", authMiddleware, async (req,res)=>{
-  const userId = req.UserId;
-  const user = await User.findOne({_id : userId});
-  const chatRooms = user.rooms;
-  res.json({listOfRooms : chatRooms});
-})
+
 
 module.exports = userRouters;

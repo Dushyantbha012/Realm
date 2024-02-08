@@ -23,7 +23,8 @@ const roomSchema = new mongoose.Schema({
     roomId:String,
     users:[{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"User"
+        ref:"User",
+        default : [],
     }],
     chats:[{
         message:String,
@@ -32,6 +33,7 @@ const roomSchema = new mongoose.Schema({
             userId:{type:mongoose.Schema.Types.ObjectId, ref:"User"}
         },
         timeStamp:{type:Date, default:Date.now},
+        default:[],
     }]
 })
 
