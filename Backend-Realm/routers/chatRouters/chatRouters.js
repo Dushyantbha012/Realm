@@ -23,23 +23,38 @@ chatRouters.get("/allrooms", authMiddleware, async (req, res) => {
   res.json({
     room: rooms.map((room) => ({
       roomId: room.roomId,
+      roomdbId: room._id,
     })),
   });
 });
 
-chatRouters.post("/addroom", authMiddleware, async (req,res)=>{
-    const roomId = req.body.roomId;
-    const existingRoom = await Room.findOne({
-        roomId:roomId,
-    });
-    if(existingRoom){
-        return res.status(411).json({message: "Room already exists"});
-    }
-    const room = {
-        roomId : roomId,
-        chats : [],
-        users:[req.userId],
-    }
-    Room.create(room);
-    res.json({message:"Room created"});
-})
+chatRouters.post("/addroom", authMiddleware, async (req, res) => {
+  const roomId = req.body.roomId;
+  const existingRoom = await Room.findOne({
+    roomId: roomId,
+  });
+  if (existingRoom) {
+    return res.status(411).json({ message: "Room already exists" });
+  }
+  const room = {
+    roomId: roomId,
+    chats: [],
+    users: [req.userId],
+  };
+  Room.create(room);
+  res.json({ message: "Room created" });
+});
+
+chatRouters.post("/joinchat", authMiddleware, async (req, res) => {
+  const updatedUser = await User.findOneAndUpdate(
+    { _id: req.userId,},
+    { $addToSet: { rooms: req.body.roomdbId } },
+    { new: true }
+  );
+  const updatedRoom = await Room.findOneAndUpdate(
+    { _id: req.body.roomdbId,},
+    { $addToSet: { users: req.userId } },
+    { new: true }
+  );
+  res.json({ message: "added to the room" });
+});
