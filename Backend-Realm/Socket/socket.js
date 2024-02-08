@@ -22,9 +22,9 @@ const initializeSocketIO = (server, namespace) => {
         socket.emit("initialChats", []);
       }
     });
-    socket.on("send_message", async(msgData) => {
-      const room= await Room.findOneAndUpdate({roomId:msgData.roomId},{$push:{chats:msgData.chat}}).exec();
-      io.to(msgData.roomId).emit("receive_message",msgData.chat);
+    socket.on("sendMessage", async(msgData) => {
+      const room= await Room.findOneAndUpdate({_id:msgData.roomdbId},{$push:{chats:msgData.chat}}).exec();
+      io.to(msgData.roomId).emit("receiveMessage",msgData.chat);
     });
     socket.on("disconnect", () => {
       console.log("Dissconnect socket id", socket.id)

@@ -27,10 +27,7 @@ const roomSchema = new mongoose.Schema({
     }],
     chats:[{
         message:String,
-        sender:{
-            name:String,
-            userId:{type:mongoose.Schema.Types.ObjectId, ref:"User"}
-        },
+        author:String,
         timeStamp:{type:Date, default:Date.now},
         default:[],
     }]
