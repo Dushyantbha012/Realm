@@ -28,5 +28,18 @@ chatRouters.get("/allrooms", authMiddleware, async (req, res) => {
 });
 
 chatRouters.post("/addroom", authMiddleware, async (req,res)=>{
-    
+    const roomId = req.body.roomId;
+    const existingRoom = await Room.findOne({
+        roomId:roomId,
+    });
+    if(existingRoom){
+        return res.status(411).json({message: "Room already exists"});
+    }
+    const room = {
+        roomId : roomId,
+        chats : [],
+        users:[req.userId],
+    }
+    Room.create(room);
+    res.json({message:"Room created"});
 })
