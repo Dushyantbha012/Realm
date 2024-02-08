@@ -40,16 +40,17 @@ userRouters.post("/signup", async (req, res) => {
   }
   const existingUser = await User.findOne({
     $or: [
-      { userName: reqUser.userName },
+      { userName: reqUser.username },
       { email: reqUser.email },
       { $and: [{ college: reqUser.college }, { SID: reqUser.SID }] },
     ],
   });
+  console.log("existing user is",existingUser)
   if(existingUser){
     return res.status(410).json({message:"UserName, EMail, SID&College already Taken"});
   }
-  const user = User.create(reqUser);
-  const token = jwt.sign({userId:user._id},SECRET_KEY)
+  const user = await User.create(reqUser);
+  const token = jwt.sign({userId:user._id},SECRET_KEY);
   res.json({
     message:"User Created Successfully !!!!",
     token:token,

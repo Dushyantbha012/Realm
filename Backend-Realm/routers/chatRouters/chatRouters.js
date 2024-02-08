@@ -45,21 +45,28 @@ chatRouters.post("/addroom", authMiddleware, async (req, res) => {
     chats: [],
     users: [req.userId],
   };
-  Room.create(room);
+  const dbRoom=await Room.create(room);
+  const updatedUser = await User.findOneAndUpdate(
+    { _id: req.userId,},
+    { $addToSet: { rooms: {roomId:dbRoom.roomId, roomdbId:dbRoom._id} } },
+    { new: true }
+  );
+  console.log("updated user room is ", updatedUser.rooms);
   res.json({ message: "Room created" });
 });
 
 chatRouters.post("/joinchat", authMiddleware, async (req, res) => {
-  const updatedUser = await User.findOneAndUpdate(
-    { _id: req.userId,},
-    { $addToSet: { rooms: req.body.roomdbId } },
-    { new: true }
-  );
   const updatedRoom = await Room.findOneAndUpdate(
     { _id: req.body.roomdbId,},
     { $addToSet: { users: req.userId } },
     { new: true }
   );
+  const updatedUser = await User.findOneAndUpdate(
+    { _id: req.userId,},
+    { $addToSet: { rooms: {roomId:updatedRoom.roomId, roomdbId:updatedRoom._id} } },
+    { new: true }
+  );
+  
   res.json({ message: "added to the room" });
 });
 

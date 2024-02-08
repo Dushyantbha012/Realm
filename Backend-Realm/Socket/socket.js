@@ -23,7 +23,7 @@ const initializeSocketIO = (server, namespace) => {
       }
     });
     socket.on("sendMessage", async(msgData) => {
-      const room= await Room.findOneAndUpdate({_id:msgData.roomdbId},{$push:{chats:msgData.chat}}).exec();
+      const room= await Room.findOneAndUpdate({roomId:msgData.roomId},{$push:{chats:msgData.chat}}).exec();
       io.to(msgData.roomId).emit("receiveMessage",msgData.chat);
     });
     socket.on("disconnect", () => {
