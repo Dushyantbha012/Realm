@@ -49,11 +49,11 @@ userRouters.post("/signup", async (req, res) => {
     return res.status(410).json({message:"UserName, EMail, SID&College already Taken"});
   }
   const user = User.create(reqUser);
-  const userId=user._id;
-  const token = jwt.sign({userId:userId},SECRET_KEY)
+  const token = jwt.sign({userId:user._id},SECRET_KEY)
   res.json({
     message:"User Created Successfully !!!!",
-    token:token
+    token:token,
+    userId:user._id
   })
 });
 
@@ -78,13 +78,15 @@ userRouters.post("/signin", async(req,res)=>{
     if(!user){
         return res.status(404).json({message:"Sign Up|| User doesn't exist"});
     }
-    const token = jwt.sign({UserId:user._id},SECRET_KEY);
-    res.json({message:"Signed In Successfully !!!!", token:token});
+
+    const token = jwt.sign({userId:user._id},SECRET_KEY);
+    res.json({message:"Signed In Successfully !!!!", token:token,userId:user._id});
     return;
 })
 
 userRouters.get("/profile",authMiddleware,async (req,res)=>{
-  const userId = req.UserId;
+  const userId = req.userId;
+  console.log("user id in profile is ", userId)
   const user = await User.findOne({_id:userId});
   const profile = {
     username : user.username,

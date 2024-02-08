@@ -12,7 +12,6 @@ const userSchema = new mongoose.Schema({
     email:{type:String, unique:true},
     rooms:[{
         type:mongoose.Schema.Types.ObjectId,
-        required:false,
         default:[],
         ref:"Room"
     }],

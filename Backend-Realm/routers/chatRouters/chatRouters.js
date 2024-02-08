@@ -7,8 +7,7 @@ const { SECRET_KEY } = require("../../config");
 const { authMiddleware } = require("../authMiddleware/authMiddleware");
 
 chatRouters.get("/userrooms", authMiddleware, async (req, res) => {
-  const userId = req.UserId;
-  const user = await User.findOne({ _id: userId });
+  const user = await User.findOne({ _id: req.userId });
   const chatRooms = user.rooms;
   res.json({
     room: chatRooms.map((room) => ({
@@ -63,3 +62,5 @@ chatRouters.post("/joinchat", authMiddleware, async (req, res) => {
   );
   res.json({ message: "added to the room" });
 });
+
+module.exports = chatRouters;
