@@ -83,8 +83,25 @@ userRouters.post("/signin", async(req,res)=>{
     return;
 })
 
-userRouters.get("/hello",authMiddleware,(req,res)=>{
-  res.json({message:"hello"})
+userRouters.get("/profile",authMiddleware,async (req,res)=>{
+  const userId = req.UserId;
+  const user = await User.findOne({_id:userId});
+  const profile = {
+    username : user.username,
+    email : user.email,
+    college: user.college,
+    graduationYear : user.graduationYear,
+    name : user.name,
+    branch : user.branch,
+    SID : user.SID
+  };
+  res.json(profile);
+})
+userRouters.get("/chatRooms", authMiddleware, async (req,res)=>{
+  const userId = req.UserId;
+  const user = await User.findOne({_id : userId});
+  const chatRooms = user.rooms;
+  res.json({listOfRooms : chatRooms});
 })
 
 module.exports = userRouters;
