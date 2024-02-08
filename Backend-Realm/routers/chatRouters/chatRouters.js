@@ -10,7 +10,12 @@ chatRouters.get("/userrooms", authMiddleware, async (req, res) => {
   const userId = req.UserId;
   const user = await User.findOne({ _id: userId });
   const chatRooms = user.rooms;
-  res.json({ listOfRooms: chatRooms });
+  res.json({
+    room: chatRooms.map((room) => ({
+      roomId: room.roomId,
+      roomdbId: room._id,
+    })),
+  });
 });
 
 chatRouters.get("/allrooms", authMiddleware, async (req, res) => {
