@@ -1,8 +1,14 @@
 import React from 'react'
-
+import Rooms from "./Rooms"
+import UserRooms from "./UserRooms"
 function DashBoard() {
   return (
-    <div>DashBoard</div>
+    <div>
+      <div>all rooms</div>
+      <Rooms />
+      <div>user rooms</div>
+      <UserRooms />
+    </div>
   )
 }
 

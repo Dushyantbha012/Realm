@@ -7,28 +7,32 @@ const { SECRET_KEY } = require("../../config");
 const { authMiddleware } = require("../authMiddleware/authMiddleware");
 
 chatRouters.get("/userrooms", authMiddleware, async (req, res) => {
+  console.log("request reached in userrooms")
   const user = await User.findOne({ _id: req.userId });
   const chatRooms = user.rooms;
+  const room=chatRooms.map((room) => ({
+    roomId: room,
+  }))
+  console.log("user rooms are ",room)
   res.json({
-    room: chatRooms.map((room) => ({
-      roomId: room.roomId,
-      roomdbId: room._id,
-    })),
+    room:room
   });
 });
 
 chatRouters.get("/allrooms", authMiddleware, async (req, res) => {
+  console.log("request reached in all rooms")
   const filter = req.query.filter || "";
   const rooms = await Room.find({
     roomId: {
       $regex: filter,
     },
   });
-  res.json({
-    room: rooms.map((room) => ({
-      roomId: room.roomId,
-      roomdbId: room._id,
-    })),
+  const room= rooms.map((room) => ({
+    roomId: room.roomId,
+    roomdbId: room._id,
+  }))
+  console.log("sent is ", room)
+  res.json({room:room
   });
 });
 
@@ -48,7 +52,7 @@ chatRouters.post("/addroom", authMiddleware, async (req, res) => {
   const dbRoom=await Room.create(room);
   const updatedUser = await User.findOneAndUpdate(
     { _id: req.userId,},
-    { $addToSet: { rooms: {roomId:dbRoom.roomId, roomdbId:dbRoom._id} } },
+    { $addToSet: { rooms: room.roomId }  },
     { new: true }
   );
   console.log("updated user room is ", updatedUser.rooms);
@@ -63,7 +67,7 @@ chatRouters.post("/joinchat", authMiddleware, async (req, res) => {
   );
   const updatedUser = await User.findOneAndUpdate(
     { _id: req.userId,},
-    { $addToSet: { rooms: {roomId:updatedRoom.roomId, roomdbId:updatedRoom._id} } },
+    { $addToSet: { rooms: updatedRoom.roomId} },
     { new: true }
   );
   
