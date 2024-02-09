@@ -6,7 +6,8 @@ import Home from "./components/Home/Home.jsx";
 import Signup from "./components/Signup/Signup.jsx"
 import Signin from "./components/Signin/Signin.jsx"
 import Chat from "./components/Chat/Chat.jsx"
-import DashBoard from "./components/DashBoard/DashBoard.jsx" 
+import DashBoard from "./components/DashBoard/DashBoard.jsx"
+import Profile from "./components/Profile/Profile.jsx"
 import { RecoilRoot } from "recoil";
 import {
   createBrowserRouter,
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="signin" element={<Signin />} />
       <Route path="chat" element={<Chat />} />
       <Route path="dashboard" element={<DashBoard />} />
+      <Route path="profile" element={<Profile />} />
     </Route>
   )
 );

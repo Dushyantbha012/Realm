@@ -20,7 +20,8 @@ function Signin() {
       const res = await axios({ url: "http://localhost:3000/api/user/signin", method: "POST", data: formData });
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token);
-        navigateTo("/dashboard"); //to be completed
+        console.log(localStorage.getItem("token"))
+        navigateTo("/profile"); //to be completed
       }
     } catch {
       alert("Log In Unsuccessful !!!!!!");

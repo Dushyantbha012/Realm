@@ -86,7 +86,9 @@ userRouters.post("/signin", async(req,res)=>{
 })
 
 userRouters.get("/profile",authMiddleware,async (req,res)=>{
+  console.log("request reacher for profile")
   const userId = req.userId;
+  console.log("in profile user id is", userId)
   console.log("user id in profile is ", userId)
   const user = await User.findOne({_id:userId});
   const profile = {
@@ -98,6 +100,7 @@ userRouters.get("/profile",authMiddleware,async (req,res)=>{
     branch : user.branch,
     SID : user.SID
   };
+  console.log("profile is" , profile)
   res.json(profile);
 })
 
