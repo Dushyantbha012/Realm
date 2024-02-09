@@ -33,10 +33,10 @@ userRouters.post("/signup", async (req, res) => {
     console.log("request reached",req.body);
     const { success } = userSchema.safeParse(reqUser);
     if (!success) {
-      return res.status(403).json({ message: "invalid input" });
+            return res.status(403).json({ message: "invalid input" });
     }
   } catch {
-    return res.status(403).json({ message: "Error while verifying data" });
+        return res.status(403).json({ message: "Error while verifying data" });
   }
   const existingUser = await User.findOne({
     $or: [

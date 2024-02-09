@@ -11,18 +11,20 @@ function Signup() {
     college:"",
     SID:"",
     email:"",
-    graduationYear:0,
+    graduationYear:'',
     password:""
   });
   const onFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.name === "graduationYear" ? parseInt(e.target.value, 10) : e.target.value })
   };
 
   const formSubmit = async (e) => {
     e.preventDefault();
     try {
       //to be completed
-      const res = await axios({ url: "http://localhost:3000/api/user/signup", method: "POST", data: formData });
+      const res = await axios({ url: "http://localhost:3000/api/user/signup", method: "POST", data: formData , headers: {
+        'Content-Type': 'application/json',
+      },});
       if (res.status === 200) {
         localStorage.setItem("token", res.data.token);
         navigateTo("/dashboard"); //to be completed
