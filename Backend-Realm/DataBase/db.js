@@ -12,8 +12,9 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   rooms: [
     {   roomId : String,
-      roomdbId: { type: mongoose.Schema.Types.ObjectId, ref: "Room" },
-    },
+        roomdbId: { type: mongoose.Schema.Types.ObjectId, ref: "Room" },
+        default: [],
+      },
   ],
   password: String,
 });

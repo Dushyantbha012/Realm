@@ -2,6 +2,7 @@ const jwt = require("jsonwebtoken")
 const {SECRET_KEY} =require('../config')
 
 const authSocket = (socket,next)=>{
+    console.log("socket request is ", socket.request);
     const {token}= socket.handshake.query;
     if(!token){
         console.log("auth failed 1")
