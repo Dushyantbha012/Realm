@@ -31,7 +31,7 @@ const roomSchema = new mongoose.Schema({
     {
       message: String,
       author: String,
-      timeStamp: { type: Date, default: Date.now },
+      timeStamp: String,
       default: [],
     },
   ],

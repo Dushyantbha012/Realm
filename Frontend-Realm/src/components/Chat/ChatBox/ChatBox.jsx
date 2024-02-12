@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react';
 import io from "socket.io-client"
 
 function ChatBox({roomId, username}) {
-  const socket = io.connect("http://localhost:3000/chatserver")
+  const socket = io.connect("http://localhost:5000")
   const [currentMessage, setCurrentMessage] = useState("");
   const [chats, setChats]=useState([]);
   useEffect(()=>{
@@ -23,6 +23,7 @@ function ChatBox({roomId, username}) {
       setChats((prevChats)=>[...prevChats,receivedChat]);
     })
   },[socket])
+
   const sendMessage = async()=>{
     if(currentMessage!=""){
       const messageData = {

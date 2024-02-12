@@ -13,6 +13,7 @@ function Profile() {
       });
       console.log(res);
       setProfile(res.data);
+      localStorage.setItem("username",res.data.username);
     };
     fetchingProfile();
   }, []);
