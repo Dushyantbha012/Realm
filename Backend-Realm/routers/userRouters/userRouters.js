@@ -86,7 +86,8 @@ userRouters.post("/signin", async(req,res)=>{
 })
 
 userRouters.get("/profile",authMiddleware,async (req,res)=>{
-  console.log("request reacher for profile")
+  try{
+    console.log("request reacher for profile")
   const userId = req.userId;
   console.log("in profile user id is", userId)
   console.log("user id in profile is ", userId)
@@ -102,6 +103,10 @@ userRouters.get("/profile",authMiddleware,async (req,res)=>{
   };
   console.log("profile is" , profile)
   res.json(profile);
+  }
+  catch{
+    res.status(411).json({message:"Server Error"})
+  }
 })
 
 

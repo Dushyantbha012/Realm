@@ -37,6 +37,7 @@ chatRouters.get("/allrooms", authMiddleware, async (req, res) => {
 });
 
 chatRouters.post("/addroom", authMiddleware, async (req, res) => {
+ try{
   const roomId = req.body.roomId;
   const existingRoom = await Room.findOne({
     roomId: roomId,
@@ -57,6 +58,10 @@ chatRouters.post("/addroom", authMiddleware, async (req, res) => {
   );
   console.log("updated user room is ", updatedUser.rooms);
   res.json({ message: "Room created" });
+ }
+ catch{
+  res.status(411).json({message:"not able to create room"})
+ }
 });
 
 chatRouters.post("/joinchat", authMiddleware, async (req, res) => {
