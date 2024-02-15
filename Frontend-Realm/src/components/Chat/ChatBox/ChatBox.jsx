@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from 'react';
 import io from "socket.io-client"
+import './chat.css'
 
 function ChatBox({roomId, username}) {
   const socket = io.connect("http://localhost:5000")
@@ -41,48 +42,37 @@ function ChatBox({roomId, username}) {
     }
   }
   return (
-    <div className="w-screen h-screen flex flex-nowrap items-center align-middle justify-center">
-      <div className="w-3/5 h-4/5 flex flex-wrap border-blue-700 min-w-3/5 min-h-4/5 border-4 rounded-xl">
-        <div className="w-full text-center text-white text-4xl bg-blue-400">
+    <div className="chatbox">
+      <div className="chat-container">
+        <div className="header">
           <p>Live Chat : {username} : {roomId}</p>
         </div>
-        <div className="flex w-[100%] flex-wrap overflow-y-scroll h-[85%] bg-green-400 border">
-            {chats.map((messageContent) => {
-              return (
-                <div className={`flex flex-row flex-wrap px-3 py-1 m-0 text-2xl}`}
-                style={{color:messageContent.author===username?"green":"red"
-                }}  >
-                  <div className="text-2xl">
-                    <div>
-                      <p>{messageContent.message}</p>
-                    </div>
-                    <div>
-                      <p>{messageContent.timeStamp}</p>
-                      <p>{messageContent.author}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-        </div >
-        <div className="flex flex-nowrap justify-center items-center align-baseline ">
-        <input
-          className="border border-black h-10 rounded-2xl w-96 mx-4"
-          type="text"
-          value={currentMessage}
-          placeholder=""
-          onChange={(event) => {
-            setCurrentMessage(event.target.value);
-          }}
-          onKeyDown={handelEnterPress}
-        />
-        <button className="h-10 border border-blue-900 text-blue-900 px-3 rounded-2xl" onClick={sendMessage}>
-          &#9658;
-        </button>
+        <div className="chat-messages">
+          {chats.map((messageContent, index) => (
+            <div className="message" key={index}>
+              <span className="author">{messageContent.author}</span>
+              <span className="content">{messageContent.message}</span>
+              <span className="timestamp">{messageContent.timeStamp}</span>
+            </div>
+          ))}
+        </div>
+        <div className="footer">
+          <input
+            className="input-field"
+            type="text"
+            value={currentMessage}
+            placeholder="Type your message..."
+            onChange={(event) => setCurrentMessage(event.target.value)}
+            onKeyDown={handelEnterPress}
+          />
+          <button className="send-button" onClick={sendMessage}>
+            Send
+          </button>
         </div>
       </div>
     </div>
   )
+  
 }
 
 export default ChatBox
