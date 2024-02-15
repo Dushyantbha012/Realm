@@ -1,13 +1,13 @@
 import { React, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import './signin.css';
 
 function Signin() {
   const navigateTo = useNavigate();
   const [formData, setFormData] = useState({
-    username:"",
-    password:""
+    username: "",
+    password: ""
   });
   const onFormChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -28,29 +28,37 @@ function Signin() {
     }
   };
   return (
-    <div>
-      <form onSubmit={formSubmit}>
-        <label>Sign In</label>
-        <label>
-          User Name:{" "}
-          <input
-            type="text"
-            name="username"
-            value={formData.username}
-            onChange={onFormChange}
-          />
-        </label>
-        <label>
-          password:{" "}
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={onFormChange}
-          />
-        </label>
-        <button type="submit">SIGN IN</button>
-      </form>
+    <div className="signin">
+    <div className="signin-page">
+      <div class="signin-container">
+        <form class="signin-form" onSubmit={formSubmit}>
+          <h2 class="signin-heading">Sign In</h2>
+          <div class="form-group">
+            <label for="username">User Name:</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
+              onChange={onFormChange}
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={onFormChange}
+              class="form-control"
+            />
+          </div>
+          <button type="submit" class="signin-button">Sign In</button>
+        </form>
+      </div>
+    </div>
     </div>
   );
 }
