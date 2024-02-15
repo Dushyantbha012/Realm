@@ -1,21 +1,26 @@
-import React from 'react'
-import Rooms from "./Rooms"
-import UserRooms from "./UserRooms"
-import AddRoom from './AddRoom/AddRoom'
-function DashBoard() {
+import React from 'react';
+import Rooms from "./Rooms";
+import UserRooms from "./UserRooms";
+import AddRoom from './AddRoom/AddRoom';
+import './dashboard.css'; 
+
+function Dashboard() {
   return (
-    <div>
-      <div>all rooms</div>
-      <Rooms />
-      <br/>
-      <br />
-      <div>add room</div>
-      <AddRoom />
-      <br /><br />
-      <div>user rooms</div>
-      <UserRooms />
+    <div className="dashboard-container">
+      <div className="section">
+        <h2 className="section-heading">All Rooms</h2>
+        <Rooms />
+      </div>
+      <div className="section">
+        <h2 className="section-heading">Add Room</h2>
+        <AddRoom />
+      </div>
+      <div className="section">
+        <h2 className="section-heading">User Rooms</h2>
+        <UserRooms />
+      </div>
     </div>
-  )
+  );
 }
 
-export default DashBoard
+export default Dashboard;
