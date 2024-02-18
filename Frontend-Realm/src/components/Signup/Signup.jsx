@@ -1,9 +1,9 @@
 import { React, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import signupbg from "../../../public/signupbg.png";
-import formbg from "../../../public/formbg.png";
-import formtextbg from "../../../public/formtextbg.png";
+
+import './signup.css';
+
 function Signup() {
   const navigateTo = useNavigate();
   const [formData, setFormData] = useState({
@@ -13,8 +13,10 @@ function Signup() {
     college: "",
     SID: "",
     email: "",
-    graduationYear: "",
-    password: "",
+
+    graduationYear: '',
+    password: ""
+
   });
   const onFormChange = (e) => {
     setFormData({
@@ -31,11 +33,10 @@ function Signup() {
     try {
       //to be completed
       const res = await axios({
-        url: "http://localhost:3000/api/user/signup",
-        method: "POST",
-        data: formData,
-        headers: {
-          "Content-Type": "application/json",
+
+        url: "http://localhost:3000/api/user/signup", method: "POST", data: formData, headers: {
+          'Content-Type': 'application/json',
+
         },
       });
       if (res.status === 200) {
@@ -47,117 +48,129 @@ function Signup() {
     }
   };
   return (
-    <div
-      className="w-screen flex flex-row flex-nowrap items-center justify-center align middle pt-[50px] pb-[50px]"
-      style={{
-        backgroundImage: `url(${signupbg})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      <form
-        onSubmit={formSubmit}
-        className="grid grid-cols-4 rounded-xl w-[50%] bg-white shadow-xl text-yellow-500"
-        
-      >
-        <label className="col-span-4 text-center text-3xl my-2">Register</label>
-        <label className="col-span-4 grid grid-cols-4 my-2">
-          <div
-            className="col-span-2 text-xl text-center px-3"
-            
-          >
-            Name:{" "}
-          </div>
+
+    <div className="signup-page"> 
+    <div className="signup-container">
+      <form className="signup-form" onSubmit={formSubmit}>
+        <h2 className="signup-heading">Register</h2>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+
           <input
             className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
+            id="name"
             name="name"
             value={formData.name}
             onChange={onFormChange}
+            className="form-control"
           />
-        </label>
-        <label className="col-span-4 grid grid-cols-4 my-2">
-          <div className="col-span-2 text-xl text-center px-3">Username: </div>
+
+        </div>
+        <div className="form-group">
+          <label htmlFor="username">User Name:</label>
+
           <input
             className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
+            id="username"
             name="username"
             value={formData.username}
             onChange={onFormChange}
+            className="form-control"
           />
-        </label>
-        <label className="col-span-4 grid grid-cols-4 my-2">
-          <div className="col-span-2 text-xl text-center px-3">Email: </div>
+
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">E Mail:</label>
+
           <input
             className="col-span-2 rounded-md border border-black w-[300px] "
             type="email"
+            id="email"
             name="email"
             value={formData.email}
             onChange={onFormChange}
+            className="form-control"
           />
-        </label>
-        <label className="col-span-4 grid grid-cols-4 my-2">
-          <div className="col-span-2 text-xl text-center px-3">College: </div>
+
+        </div>
+        <div className="form-group">
+          <label htmlFor="college">College:</label>
+
           <input
             className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
+            id="college"
             name="college"
             value={formData.college}
             onChange={onFormChange}
+            className="form-control"
           />
-        </label>
-        <label className="col-span-4 grid grid-cols-4 my-2">
-          <div className="col-span-2 text-xl text-center px-3">Branch: </div>
+
+        </div>
+        <div className="form-group">
+          <label htmlFor="branch">Branch:</label>
+
           <input
             className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
+            id="branch"
             name="branch"
             value={formData.branch}
             onChange={onFormChange}
+            className="form-control"
           />
-        </label>
-        <label className="col-span-4 grid grid-cols-4 my-2">
-          <div className="col-span-2 text-xl text-center px-3">
-            Graduation Year:{" "}
-          </div>
+
+        </div>
+        <div className="form-group">
+          <label htmlFor="graduationYear">Graduation Year:</label>
+
           <input
             className="col-span-2 rounded-md border border-black w-[300px] "
             type="number"
+            id="graduationYear"
             name="graduationYear"
             value={formData.graduationYear}
             onChange={onFormChange}
+            className="form-control"
           />
-        </label>
-        <label className="col-span-4 grid grid-cols-4 my-2">
-          <div className="col-span-2 text-xl text-center px-3">SID: </div>
+
+        </div>
+        <div className="form-group">
+          <label htmlFor="SID">SID:</label>
+
           <input
             className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
+            id="SID"
             name="SID"
             value={formData.SID}
             onChange={onFormChange}
+            className="form-control"
           />
-        </label>
-        <label className="col-span-4 grid grid-cols-4 my-2">
-          <div className="col-span-2 text-xl text-center px-3">Password: </div>
+
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+
           <input
             className="col-span-2 rounded-md border border-black w-[300px] "
             type="password"
+            id="password"
             name="password"
             value={formData.password}
             onChange={onFormChange}
+            className="form-control"
           />
-        </label>
-        <div className="flex flex-row flex-nowrap justify-center align-middle items-center col-span-4 my-2">
-          <button
-            type="submit"
-            className="px-2 py-1 border text-lg border-black rounded-md"
-          >
-            Register
-          </button>
+
         </div>
+        <button type="submit" className="signup-button">Register</button>
+
       </form>
     </div>
+    </div>
+
   );
 }
 
