@@ -1,7 +1,9 @@
 import { React, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
 import './signup.css';
+
 function Signup() {
   const navigateTo = useNavigate();
   const [formData, setFormData] = useState({
@@ -11,11 +13,19 @@ function Signup() {
     college: "",
     SID: "",
     email: "",
+
     graduationYear: '',
     password: ""
+
   });
   const onFormChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.name === "graduationYear" ? parseInt(e.target.value, 10) : e.target.value })
+    setFormData({
+      ...formData,
+      [e.target.name]:
+        e.target.name === "graduationYear"
+          ? parseInt(e.target.value, 10)
+          : e.target.value,
+    });
   };
 
   const formSubmit = async (e) => {
@@ -23,8 +33,10 @@ function Signup() {
     try {
       //to be completed
       const res = await axios({
+
         url: "http://localhost:3000/api/user/signup", method: "POST", data: formData, headers: {
           'Content-Type': 'application/json',
+
         },
       });
       if (res.status === 200) {
@@ -36,13 +48,16 @@ function Signup() {
     }
   };
   return (
+
     <div className="signup-page"> 
     <div className="signup-container">
       <form className="signup-form" onSubmit={formSubmit}>
         <h2 className="signup-heading">Register</h2>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
+
           <input
+            className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
             id="name"
             name="name"
@@ -50,10 +65,13 @@ function Signup() {
             onChange={onFormChange}
             className="form-control"
           />
+
         </div>
         <div className="form-group">
           <label htmlFor="username">User Name:</label>
+
           <input
+            className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
             id="username"
             name="username"
@@ -61,10 +79,13 @@ function Signup() {
             onChange={onFormChange}
             className="form-control"
           />
+
         </div>
         <div className="form-group">
           <label htmlFor="email">E Mail:</label>
+
           <input
+            className="col-span-2 rounded-md border border-black w-[300px] "
             type="email"
             id="email"
             name="email"
@@ -72,10 +93,13 @@ function Signup() {
             onChange={onFormChange}
             className="form-control"
           />
+
         </div>
         <div className="form-group">
           <label htmlFor="college">College:</label>
+
           <input
+            className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
             id="college"
             name="college"
@@ -83,10 +107,13 @@ function Signup() {
             onChange={onFormChange}
             className="form-control"
           />
+
         </div>
         <div className="form-group">
           <label htmlFor="branch">Branch:</label>
+
           <input
+            className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
             id="branch"
             name="branch"
@@ -94,10 +121,13 @@ function Signup() {
             onChange={onFormChange}
             className="form-control"
           />
+
         </div>
         <div className="form-group">
           <label htmlFor="graduationYear">Graduation Year:</label>
+
           <input
+            className="col-span-2 rounded-md border border-black w-[300px] "
             type="number"
             id="graduationYear"
             name="graduationYear"
@@ -105,10 +135,13 @@ function Signup() {
             onChange={onFormChange}
             className="form-control"
           />
+
         </div>
         <div className="form-group">
           <label htmlFor="SID">SID:</label>
+
           <input
+            className="col-span-2 rounded-md border border-black w-[300px] "
             type="text"
             id="SID"
             name="SID"
@@ -116,10 +149,13 @@ function Signup() {
             onChange={onFormChange}
             className="form-control"
           />
+
         </div>
         <div className="form-group">
           <label htmlFor="password">Password:</label>
+
           <input
+            className="col-span-2 rounded-md border border-black w-[300px] "
             type="password"
             id="password"
             name="password"
@@ -127,8 +163,10 @@ function Signup() {
             onChange={onFormChange}
             className="form-control"
           />
+
         </div>
         <button type="submit" className="signup-button">Register</button>
+
       </form>
     </div>
     </div>
