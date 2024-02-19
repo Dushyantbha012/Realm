@@ -16,7 +16,7 @@ const userSchema = z.object({
   graduationYear: z.number(),
   SID: z.string(),
   email: z.string().email(),
-  password:z.string(),
+  password: z.string(),
 });
 userRouters.post("/signup", async (req, res) => {
   const reqUser = {
@@ -30,13 +30,13 @@ userRouters.post("/signup", async (req, res) => {
     password: req.body.password,
   };
   try {
-    console.log("request reached",req.body);
+    console.log("request reached", req.body);
     const { success } = userSchema.safeParse(reqUser);
     if (!success) {
-            return res.status(403).json({ message: "invalid input" });
+      return res.status(403).json({ message: "invalid input" });
     }
   } catch {
-        return res.status(403).json({ message: "Error while verifying data" });
+    return res.status(403).json({ message: "Error while verifying data" });
   }
   const existingUser = await User.findOne({
     $or: [
@@ -45,69 +45,89 @@ userRouters.post("/signup", async (req, res) => {
       { $and: [{ college: reqUser.college }, { SID: reqUser.SID }] },
     ],
   });
-  console.log("existing user is",existingUser)
-  if(existingUser){
-    return res.status(410).json({message:"UserName, EMail, SID&College already Taken"});
+  console.log("existing user is", existingUser);
+  if (existingUser) {
+    return res
+      .status(410)
+      .json({ message: "UserName, EMail, SID&College already Taken" });
   }
   const user = await User.create(reqUser);
-  const token = jwt.sign({userId:user._id},SECRET_KEY);
+  const token = jwt.sign({ userId: user._id }, SECRET_KEY);
   res.json({
-    message:"User Created Successfully !!!!",
-    token:token,
-    userId:user._id
-  })
+    message: "User Created Successfully !!!!",
+    token: token,
+    userId: user._id,
+  });
 });
 
 //Sign In
 
 const signInSchema = z.object({
-    username:z.string(),
-    password:z.string(),
+  username: z.string(),
+  password: z.string(),
+});
 
-})
-
-userRouters.post("/signin", async(req,res)=>{
-    const reqUser = {
-        username:req.body.username,
-        password:req.body.password,
-    }
-    const {success}= signInSchema.safeParse(reqUser)
-    if(!success){
-        return res.status(411).json({message:"Invalid Input"});
-    }
-    const user = await User.findOne(reqUser);
-    if(!user){
-        return res.status(404).json({message:"Sign Up|| User doesn't exist"});
-    }
-
-    const token = jwt.sign({userId:user._id},SECRET_KEY);
-    res.json({message:"Signed In Successfully !!!!", token:token,userId:user._id});
-    return;
-})
-
-userRouters.get("/profile",authMiddleware,async (req,res)=>{
-  try{
-    console.log("request reacher for profile")
-  const userId = req.userId;
-  console.log("in profile user id is", userId)
-  console.log("user id in profile is ", userId)
-  const user = await User.findOne({_id:userId});
-  const profile = {
-    username : user.username,
-    email : user.email,
-    college: user.college,
-    graduationYear : user.graduationYear,
-    name : user.name,
-    branch : user.branch,
-    SID : user.SID
+userRouters.post("/signin", async (req, res) => {
+  const reqUser = {
+    username: req.body.username,
+    password: req.body.password,
   };
-  console.log("profile is" , profile)
-  res.json(profile);
+  const { success } = signInSchema.safeParse(reqUser);
+  if (!success) {
+    return res.status(411).json({ message: "Invalid Input" });
   }
-  catch{
-    res.status(411).json({message:"Server Error"})
+  const user = await User.findOne(reqUser);
+  if (!user) {
+    return res.status(404).json({ message: "Sign Up|| User doesn't exist" });
   }
-})
 
+  const token = jwt.sign({ userId: user._id }, SECRET_KEY);
+  res.json({
+    message: "Signed In Successfully !!!!",
+    token: token,
+    userId: user._id,
+  });
+  return;
+});
+
+userRouters.get("/profile", authMiddleware, async (req, res) => {
+  try {
+    console.log("request reacher for profile");
+    const userId = req.userId;
+    console.log("in profile user id is", userId);
+    console.log("user id in profile is ", userId);
+    const user = await User.findOne({ _id: userId });
+    const profile = {
+      username: user.username,
+      email: user.email,
+      college: user.college,
+      graduationYear: user.graduationYear,
+      name: user.name,
+      branch: user.branch,
+      SID: user.SID,
+    };
+    console.log("profile is", profile);
+    res.json(profile);
+  } catch {
+    res.status(411).json({ message: "Server Error" });
+  }
+});
+
+userRouters.get("/allusers", authMiddleware, async (req, res) => {
+  try {
+    const userId = req.userId;
+    const name = req.query.name || "";
+    const allusers = await User.find({ name: { $regex: name } });
+    const users = allusers.map((user)=>({
+      name:user.name,
+      college:user.college,
+      branch:user.branch,
+      graduationYear: user.graduationYear,
+      SID : user.SID,
+      email : user.email
+    }));
+    res.json({users:users});
+  } catch {res.json({users:[]})}
+});
 
 module.exports = userRouters;
