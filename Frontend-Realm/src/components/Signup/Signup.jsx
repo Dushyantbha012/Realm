@@ -57,7 +57,7 @@ function Signup() {
           <label htmlFor="name">Name:</label>
 
           <input
-            className="col-span-2 rounded-md border border-black w-[300px] "
+           
             type="text"
             id="name"
             name="name"
@@ -71,7 +71,7 @@ function Signup() {
           <label htmlFor="username">User Name:</label>
 
           <input
-            className="col-span-2 rounded-md border border-black w-[300px] "
+
             type="text"
             id="username"
             name="username"
@@ -85,7 +85,7 @@ function Signup() {
           <label htmlFor="email">E Mail:</label>
 
           <input
-            className="col-span-2 rounded-md border border-black w-[300px] "
+
             type="email"
             id="email"
             name="email"
@@ -99,7 +99,7 @@ function Signup() {
           <label htmlFor="college">College:</label>
 
           <input
-            className="col-span-2 rounded-md border border-black w-[300px] "
+
             type="text"
             id="college"
             name="college"
@@ -113,7 +113,7 @@ function Signup() {
           <label htmlFor="branch">Branch:</label>
 
           <input
-            className="col-span-2 rounded-md border border-black w-[300px] "
+ 
             type="text"
             id="branch"
             name="branch"
@@ -127,7 +127,7 @@ function Signup() {
           <label htmlFor="graduationYear">Graduation Year:</label>
 
           <input
-            className="col-span-2 rounded-md border border-black w-[300px] "
+    
             type="number"
             id="graduationYear"
             name="graduationYear"
@@ -141,7 +141,7 @@ function Signup() {
           <label htmlFor="SID">SID:</label>
 
           <input
-            className="col-span-2 rounded-md border border-black w-[300px] "
+       
             type="text"
             id="SID"
             name="SID"
@@ -155,7 +155,7 @@ function Signup() {
           <label htmlFor="password">Password:</label>
 
           <input
-            className="col-span-2 rounded-md border border-black w-[300px] "
+  
             type="password"
             id="password"
             name="password"
