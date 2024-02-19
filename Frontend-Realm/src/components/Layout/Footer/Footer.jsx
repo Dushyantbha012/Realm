@@ -9,7 +9,7 @@ function Footer() {
           <img src={college_logo} alt="College Logo" className="logo-image" />
         </div>
         <div className="footer-info">
-         
+         Created By :- Dushyant Bhardwaj , Arnav Bansal
         </div>
       </div>
     </footer>

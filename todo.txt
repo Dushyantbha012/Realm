@@ -1,0 +1,2 @@
+- create one more option in rooms which is private, used to check if any room is private or not 
+    and use it while adding someone to room if room is private then don't allow anyone to join it after its creation
