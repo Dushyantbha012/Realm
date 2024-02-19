@@ -6,9 +6,10 @@ function UserRooms() {
   const [rooms, setRooms] = useState([]);
   const [filter, setFilter] = useState("");
   useEffect(() => {
+    console.log("request sent from filter")
     const fetchRooms = async () => {
       const res = await axios({
-        url: "http://localhost:3000/api/chat/userrooms",
+        url: "http://localhost:3000/api/chat/userrooms?filter="+filter,
         method: "GET",
         headers: { authorization: localStorage.getItem("token") },
       });
@@ -32,7 +33,7 @@ function UserRooms() {
       <div>
         <div>
           {rooms.map((room) => (
-            <UserRoom roomId={room.roomId} roomdbId={room.roomdbId} />
+            <UserRoom roomId={room.roomId}/>
           ))}
         </div>
       </div>
