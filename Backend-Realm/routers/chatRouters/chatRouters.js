@@ -85,9 +85,6 @@ chatRouters.post("/addroom", authMiddleware, async (req, res) => {
   catch {
     res.status(411).json({ message: "not able to create room" })
 
-  } catch {
-    res.status(411).json({ message: "not able to create room" });
-
   }
 });
 

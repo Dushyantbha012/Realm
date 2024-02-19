@@ -51,10 +51,10 @@ function Signup() {
 
     <div className="signup-page"> 
     <div className="signup-container">
-      <form className="signup-form" onSubmit={formSubmit}>
+      <form className="flex flex-wrap max-h-[100%] max-w-[100%] flex-row justify-evenly" onSubmit={formSubmit}>
         <h2 className="signup-heading">Register</h2>
         <div className="form-group">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name" className="text-center">Name:</label>
 
           <input
            
@@ -68,7 +68,7 @@ function Signup() {
 
         </div>
         <div className="form-group">
-          <label htmlFor="username">User Name:</label>
+          <label htmlFor="username" className="text-center">User Name:</label>
 
           <input
 
@@ -82,7 +82,7 @@ function Signup() {
 
         </div>
         <div className="form-group">
-          <label htmlFor="email">E Mail:</label>
+          <label htmlFor="email" className="text-center">E Mail:</label>
 
           <input
 
@@ -96,7 +96,7 @@ function Signup() {
 
         </div>
         <div className="form-group">
-          <label htmlFor="college">College:</label>
+          <label htmlFor="college" className="text-center">College:</label>
 
           <input
 
@@ -110,7 +110,7 @@ function Signup() {
 
         </div>
         <div className="form-group">
-          <label htmlFor="branch">Branch:</label>
+          <label htmlFor="branch" className="text-center">Branch:</label>
 
           <input
  
@@ -124,7 +124,7 @@ function Signup() {
 
         </div>
         <div className="form-group">
-          <label htmlFor="graduationYear">Graduation Year:</label>
+          <label htmlFor="graduationYear" className="text-center">Graduation Year:</label>
 
           <input
     
@@ -138,7 +138,7 @@ function Signup() {
 
         </div>
         <div className="form-group">
-          <label htmlFor="SID">SID:</label>
+          <label htmlFor="SID" className="text-center">SID:</label>
 
           <input
        
@@ -152,7 +152,7 @@ function Signup() {
 
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password" className="text-center">Password:</label>
 
           <input
   
@@ -165,8 +165,10 @@ function Signup() {
           />
 
         </div>
+        <div className="w-[100%] flex flex-row flex-nowrap justify-center">
         <button type="submit" className="signup-button">Register</button>
 
+        </div>
       </form>
     </div>
     </div>
