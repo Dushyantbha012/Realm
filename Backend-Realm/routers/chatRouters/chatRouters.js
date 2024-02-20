@@ -122,7 +122,6 @@ chatRouters.post("/createprivate", authMiddleware, async (req, res) => {
     const senderMail = req.body.senderMail;
     const recMail = req.body.recMail;
     //
-    console.log("sender is ", senderMail, "rec is ", recMail)
     const receiver = User.findOne({ email: recMail });
     //
     const mails = [senderMail, recMail];
