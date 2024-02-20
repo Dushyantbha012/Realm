@@ -8,6 +8,7 @@ const { authMiddleware } = require("../authMiddleware/authMiddleware");
 
 chatRouters.get("/userrooms", authMiddleware, async (req, res) => {
 
+ try{
   console.log("request reached in userrooms")
   const filter = req.query.filter || "";
   console.log("filter is ", filter)
@@ -33,6 +34,9 @@ chatRouters.get("/userrooms", authMiddleware, async (req, res) => {
     room: room
   });
   }
+ }catch{
+  res.json({room:[]})
+ }
   
 });
 

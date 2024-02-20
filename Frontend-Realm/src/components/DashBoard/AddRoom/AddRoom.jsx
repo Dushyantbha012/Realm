@@ -12,7 +12,7 @@ function AddRoom() {
             data : {roomId:roomId}
           });
           alert(res.data.message)
-          
+          window.location.reload(false);
     }
     else{
         alert("Give a name to the Room")
