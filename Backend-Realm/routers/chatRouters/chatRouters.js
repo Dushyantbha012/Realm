@@ -117,11 +117,12 @@ if(room.private){
   res.json({ message: "added to the room" });
 });
 
-chatRouters.post("/joinprivate", authMiddleware, async (req, res) => {
+chatRouters.post("/createprivate", authMiddleware, async (req, res) => {
   try {
-    const senderMail = res.body.senderMail;
-    const recMail = res.body.recMail;
+    const senderMail = req.body.senderMail;
+    const recMail = req.body.recMail;
     //
+    console.log("sender is ", senderMail, "rec is ", recMail)
     const receiver = User.findOne({ email: recMail });
     //
     const mails = [senderMail, recMail];
