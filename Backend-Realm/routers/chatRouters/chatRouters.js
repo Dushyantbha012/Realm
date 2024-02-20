@@ -43,6 +43,7 @@ chatRouters.get("/allrooms", authMiddleware, async (req, res) => {
     roomId: {
       $regex: filter,
     },
+    private: false,
   });
   const room = rooms.map((room) => ({
     roomId: room.roomId,
@@ -89,6 +90,11 @@ chatRouters.post("/addroom", authMiddleware, async (req, res) => {
 });
 
 chatRouters.post("/joinchat", authMiddleware, async (req, res) => {
+const room = await Room.findById(req.body.roomdbId);
+if(room.private){
+  return res.status(403).json({message: "Room is Private"})
+}
+
   const updatedRoom = await Room.findOneAndUpdate(
 
     { _id: req.body.roomdbId, },
@@ -129,6 +135,7 @@ chatRouters.post("/joinprivate", authMiddleware, async (req, res) => {
       roomId: roomId,
       chats: [],
       users: [req.userId, receiver._id],
+      private : true,
     };
     const dbRoom = await Room.create(room);
     const updatedSender = await User.findOneAndUpdate(
