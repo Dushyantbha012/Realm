@@ -116,8 +116,8 @@ userRouters.get("/profile", authMiddleware, async (req, res) => {
 userRouters.get("/allusers", authMiddleware, async (req, res) => {
   try {
     const userId = req.userId;
-    const name = req.query.name || "";
-    const allusers = await User.find({ name: { $regex: name } });
+    const filter = req.query.filter || "";
+    const allusers = await User.find({ name: { $regex: filter } });
     const users = allusers.map((user)=>({
       name:user.name,
       college:user.college,
