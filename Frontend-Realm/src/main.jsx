@@ -17,6 +17,8 @@ import {
 } from "react-router-dom";
 import UserSearch from "./components/UserSearch/UserSearch.jsx";
 import UserProfile from "./components/UserSearch/UserProfile.jsx";
+import PrivateChat from "./components/PersonalChat/PrivateChat.jsx"
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,7 +31,7 @@ const router = createBrowserRouter(
       <Route path="profile" element={<Profile />} />
       <Route path="users" element={<UserSearch />} />
       <Route path="usersprofile" element={<UserProfile />} />
-      
+      <Route path="privatechat" element={<PrivateChat />} />
     </Route>
   )
 );

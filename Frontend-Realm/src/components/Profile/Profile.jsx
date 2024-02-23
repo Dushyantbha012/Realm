@@ -14,6 +14,7 @@ function Profile() {
       console.log(res);
       setProfile(res.data);
       localStorage.setItem("username",res.data.username);
+      localStorage.setItem("email",res.data.email);
     };
     fetchingProfile();
   }, []);

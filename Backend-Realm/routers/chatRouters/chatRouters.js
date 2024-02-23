@@ -12,11 +12,12 @@ chatRouters.get("/userrooms", authMiddleware, async (req, res) => {
   console.log("request reached in userrooms")
   const filter = req.query.filter || "";
   console.log("filter is ", filter)
-  const user = await User.findOne({ _id: req.userId });
-  const chatRooms = user.rooms;
+  const user = await User.findOne({ _id: req.userId});
+  const tempRooms = user.rooms
+  const chatRooms = tempRooms.filter(room => !room.includes("@")) ;
 
   if (filter != "") {
-    const filteredRooms = chatRooms.filter(room => room.includes(filter));
+    const filteredRooms = chatRooms.filter(room => ( room.includes(filter)));
 
     const room = filteredRooms.map(room => ({
       roomId: room,
@@ -133,7 +134,7 @@ chatRouters.post("/createprivate", authMiddleware, async (req, res) => {
     });
     if (existingRoom) {
       
-      return res.status(200).json({ message: "Room already exists"});
+      return res.status(200).json({ message: "Room already exists", id: roomId});
     }
     const room = {
       roomId: roomId,
@@ -152,9 +153,9 @@ chatRouters.post("/createprivate", authMiddleware, async (req, res) => {
       { $addToSet: { rooms: room.roomId } },
       { new: true }
     );
-    res.status(200).json({ message: "Room created" });
+    res.status(200).json({ message: "Room created" , id: roomId});
   } catch {
-    res.status(411).json({message: "error"})
+    res.status(411).json({message: "error", id :""})
   }
 });
 

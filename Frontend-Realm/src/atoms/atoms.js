@@ -24,6 +24,12 @@ const otherNameState = atom({
     key: 'otherEmailState', 
     default: '', 
   });
+  const emailState = atom({
+    key: 'emailState', 
+    default: '', 
+  });
 
-  export {otherBranchState,otherCollegeState,otherEmailState,otherGraduationYearState,otherNameState,otherSIDState}
+  const privateRoomIdState = atom({key:"privateRoomIdState",default:""})
+
+  export {otherBranchState,otherCollegeState,otherEmailState,otherGraduationYearState,otherNameState,otherSIDState, privateRoomIdState,emailState}
   
