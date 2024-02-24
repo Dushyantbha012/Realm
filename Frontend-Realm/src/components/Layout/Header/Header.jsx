@@ -14,6 +14,7 @@ function Header() {
         <nav className="navbar">
           <ul className="nav-list">
             <li className="nav-link" onClick={()=> navigateTo("/dashboard")}>DashBoard</li>
+            <li className="nav-link" onClick={()=> navigateTo("/users")}>Connect</li>
             <li className="nav-link" onClick={()=> navigateTo("/chat")}>Chat</li>
             <li className="nav-link" onClick={()=> navigateTo("/signin")}>Signin</li>
             <li className="nav-link" onClick={()=> navigateTo("signup")} >Signup</li>
