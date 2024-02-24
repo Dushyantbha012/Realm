@@ -1,22 +1,31 @@
+.profile-page {
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  vertical-align: middle;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
 .profile-container {
     display: flex;
     max-width: 1200px;
-    margin: 0 auto;
-    margin-top: 100px;
-    margin-bottom: 150px;
+    border-width: 8px;
+    border-color:cadetblue;
+    border-radius: 10px;
   }
   
   .profile-sidebar {
     flex: 1;
     background-color: #f4f4f4;
-    padding: 20px;
-
-    
+    padding-left: 30px;
   }
   
   .photo img {
     margin-top : 50px;
-    width: 400px;
+    width: 500px;
     height: 250px;
     border-radius: 50%;
   }
@@ -29,21 +38,25 @@
   
   .profile-header {
     margin-bottom: 20px;
+    text-align:center;
   }
   
   .profile-header h1 {
     font-size: 24px;
     margin-bottom: 5px;
+    text-align:center;
   }
   
   .profile-header h2 {
     font-size: 24px;
     margin-bottom: 10px;
+    text-align:center;
   }
   
   .profile-text h2{
     margin-top: 10px;
     font-size: 24px;
     margin-bottom: 15px;
+    text-align:center;
   }
   
