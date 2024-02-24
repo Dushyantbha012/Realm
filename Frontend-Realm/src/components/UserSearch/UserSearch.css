@@ -1,0 +1,69 @@
+.users-component{
+  background-image: url('https://media.sproutsocial.com/uploads/2023/09/12-ways-to-use-social-media-for-education-V2-FINAL.svg');
+  display: flex;
+  justify-content: center;
+  height: 80vh;
+  align-items: center;
+
+}
+.users-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+  }
+  .list{
+    max-height: 65vh;
+    overflow-y: scroll;
+  }
+  
+  .users-header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .users-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-size: 16px;
+  }
+  
+  .user-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .user-card:last-child {
+    margin-bottom: 0;
+  }
+  
+  .user-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-details {
+    font-size: 18px;
+  }
+  
+  .user-details span {
+    font-weight: bold;
+  }
+  
+  .user-details p {
+    margin: 5px 0;
+  }
+  
+  
