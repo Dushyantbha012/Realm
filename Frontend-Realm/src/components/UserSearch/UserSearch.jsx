@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import UserButton from "./UserButton";
 import axios from "axios"
-
+import './UserSearch.css'
 function UserSearch() {
   const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState("");
@@ -20,20 +20,21 @@ function UserSearch() {
   }, [filter]);
 
   return (
-    <div>
-      <div>Users</div>
-      <div>
+    <div className="users-container">
+      <div className="users-header">Users</div>
         <input
+        className="users-input"
           onChange={(e) => {
             setFilter(e.target.value);
           }}
           type="text"
           value={filter}
+          placeholder="Search Users..."
         />
-      </div>
       <div>
-        <div>
+        
           {users.map((user) => (
+            <div className="user-card">
             <UserButton
               name={user.name}
               college={user.college}
@@ -42,8 +43,9 @@ function UserSearch() {
               SID={user.SID}
               email={user.email}
             />
+            </div>
           ))}
-        </div>
+  
       </div>
     </div>
   );
