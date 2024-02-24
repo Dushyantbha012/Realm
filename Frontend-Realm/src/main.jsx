@@ -18,7 +18,7 @@ import {
 import UserSearch from "./components/UserSearch/UserSearch.jsx";
 import UserProfile from "./components/UserSearch/UserProfile.jsx";
 import PrivateChat from "./components/PersonalChat/PrivateChat.jsx"
-
+import GlobalChat from "./components/GlobalChat/GlobalChat.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +32,7 @@ const router = createBrowserRouter(
       <Route path="users" element={<UserSearch />} />
       <Route path="usersprofile" element={<UserProfile />} />
       <Route path="privatechat" element={<PrivateChat />} />
+      <Route path="globalchat" element={<GlobalChat/>} />
     </Route>
   )
 );

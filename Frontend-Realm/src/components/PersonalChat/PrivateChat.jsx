@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {privateRoomIdState} from "../../atoms/atoms"
 import { useRecoilValue } from 'recoil'
-import ChatBox from "./ChatBox"
+import ChatBox from "../Chat/ChatBox/ChatBox"
 function PrivateChat() {
   const privateRoomId = useRecoilValue(privateRoomIdState);
   return (
