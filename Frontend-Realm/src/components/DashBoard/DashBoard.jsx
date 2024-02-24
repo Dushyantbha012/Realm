@@ -9,16 +9,16 @@ function Dashboard() {
     <div className="dashboard-container">
       <div className="section">
         <h2 className="section-heading">All Rooms</h2>
-        <Rooms />
       </div>
+        <Rooms />
       <div className="section">
         <h2 className="section-heading">Add Room</h2>
         <AddRoom />
       </div>
       <div className="section">
         <h2 className="section-heading">User Rooms</h2>
-        <UserRooms />
       </div>
+        <UserRooms />
     </div>
   );
 }
