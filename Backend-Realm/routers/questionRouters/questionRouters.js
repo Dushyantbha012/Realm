@@ -70,7 +70,7 @@ questionRouters.post("/addanswer", authMiddleware, async (req, res) => {
       },
       { new: true }
     ).exec();
-    res.json({message:"Answer Added"})
+    res.status(200).json({message:"Answer Added"})
   } catch {
     res.status(410).json({message:"Error while Adding Answer"})
   }
