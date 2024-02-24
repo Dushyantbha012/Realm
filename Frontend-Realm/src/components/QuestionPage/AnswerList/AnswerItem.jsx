@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios"
-
+import './AnswerList.css'
 function AnswerItem({
   content = "",
   author = "",
@@ -33,9 +33,7 @@ function AnswerItem({
   return (
     <div>
       <div>{content}</div>
-      <div>{author}</div>
-      <div onClick={likeAnswer}>{likes}</div>
-      <div onClick={dislikeAnswer}>{dislikes}</div>
+      <div className="author">Answered By : {author}</div>
     </div>
   );
 }
