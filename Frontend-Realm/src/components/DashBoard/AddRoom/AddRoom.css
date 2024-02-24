@@ -1,0 +1,29 @@
+.add-room-container {
+    width: 300px;
+    margin: 20px auto;
+  }
+  
+  .add-room-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .add-room-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .add-room-container button:hover {
+    background-color: #0056b3;
+  }
+  
