@@ -21,6 +21,7 @@ function Profile() {
         });
         setProfile(res.data);
         localStorage.setItem("username", res.data.username);
+        localStorage.setItem("college",res.data.college)
       } catch (error) {
         console.error("Error fetching profile:", error);
       }
