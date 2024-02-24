@@ -99,22 +99,24 @@ questionRouters.post("/question",authMiddleware,async(req,res)=>{
 })
 
 questionRouters.post("/likeques",authMiddleware,async(req,res)=>{
-    //try{
+  console.log("request reached likeques")  
+  try{
         const quesId = req.body.quesId;
 
     await Question.findByIdAndUpdate(
         quesId,
         { $inc: { likes: 1 } }, 
         { new: true });
-        return res.json({message:"Liked"})
-   // }
-    //catch{
-        //res.status(410).json({message:"Error"})
-    //}
+        return res.status(200).json({message:"Liked"})
+   }
+    catch{
+        res.status(410).json({message:"Error"})
+    }
 })
 
 questionRouters.post("/dislikeques",authMiddleware,async(req,res)=>{
-    try{
+  console.log("request reached dislikeques")    
+  try{
         const quesId = req.body.quesId;
 
     await Question.findByIdAndUpdate(
@@ -122,25 +124,27 @@ questionRouters.post("/dislikeques",authMiddleware,async(req,res)=>{
         { $inc: { dislikes: 1 } }, 
         
         { new: true });
-        return res.json({message:"Disliked"})
+        return res.status(200).json({message:"Disliked"})
     }catch{
         res.status(410).json({message:"Error"})
     }
 })
 questionRouters.post("/likeanswer",authMiddleware,async(req,res)=>{
-    try{
+  console.log("request reached likeans")    
+  try{
         const ansId = req.body.ansId;
     
     await Answer.findByIdAndUpdate(
         ansId,
         { $inc: { likes: 1 } }, 
         { new: true });
-        return res.json({message:"Liked"})
+        return res.status(200).json({message:"Liked"})
     }catch{
         res.status(410).json({message:"Error"})
     }
 })
 questionRouters.post("/dislikeanswer",authMiddleware,async(req,res)=>{
+  console.log("request reached dislikeans")   
     try{
         const ansId = req.body.ansId;
     
@@ -148,7 +152,7 @@ questionRouters.post("/dislikeanswer",authMiddleware,async(req,res)=>{
         ansId,
         { $inc: { dislikes: 1 } }, 
         { new: true });
-        return res.json({message:"Disliked"})
+        return res.status(200).json({message:"Disliked"})
     }catch{
         res.status(410).json({message:"Error"})
     }

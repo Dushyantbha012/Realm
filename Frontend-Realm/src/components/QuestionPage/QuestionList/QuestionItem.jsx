@@ -6,7 +6,7 @@ function QuestionItem({author, dislikes, likes, title, quesId}) {
     localStorage.setItem("quesId",quesId);
     navigateTo("/answer")
   }
-
+  
   return (
     <div><div onClick={onClickHandeler}>{title}</div></div>
   )

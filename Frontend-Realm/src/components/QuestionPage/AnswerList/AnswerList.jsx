@@ -42,13 +42,37 @@ function AnswerList() {
       }
     }
   };
+  
+  const likeQues = async () => {
+    const res = await axios({
+      method: "POST",
+      url: "http://localhost:3000/api/question/likeques",
+      data: {quesId:localStorage.getItem("quesId")},
+      headers: { Authorization: localStorage.getItem("token") },
+    });
+    if(res.status===200){
+      window.location.reload(false);
+    }
+  };
+  const dislikeQues = async () => {
+    const res = await axios({
+      method: "POST",
+      url: "http://localhost:3000/api/question/dislikeques",
+      data: {quesId:localStorage.getItem("quesId")},
+      headers: { Authorization: localStorage.getItem("token") },
+    });
+    if(res.status===200){
+      window.location.reload(false);
+    }
+  };
+
   return (
     <div>
       <div>
         <div>{data.title}</div>
         <div>{data.author}</div>
-        <div>{data.likes}</div>
-        <div>{data.dislikes}</div>
+        <div onClick={likeQues}>{data.likes}</div>
+        <div onClick={dislikeQues}>{data.dislikes}</div>
       </div>
       <div>
         {data.answers.map((answer) => (
