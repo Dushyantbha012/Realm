@@ -1,0 +1,42 @@
+.userrooms-container {
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.userrooms-header {
+  display: flex;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.userrooms-input {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.userroom-card {
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+
+.userroom-id {
+  font-size: 18px;
+  color: #333;
+  
+}
+
+.userroom-db-id {
+  font-size: 14px;
+  color: #666;
+}
