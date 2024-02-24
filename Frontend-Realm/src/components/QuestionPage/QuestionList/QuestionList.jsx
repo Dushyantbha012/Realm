@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import QuestionItem from "./QuestionItem";
+import './QuestionList.css'
 
 function QuestionList() {
   const [filter, setFilter] = useState("");
@@ -19,17 +20,20 @@ function QuestionList() {
   }, [filter]);
 
   return (
-    <div>
-      <div>QuestionList</div>
+    <div className="qlist-container">
+      <div className="qlist-header">QuestionList</div>
       <input
+        className="qlist-input"
         onChange={(e) => {
           setFilter(e.target.value);
         }}
         type="text"
         value={filter}
+        placeholder="Search question..."
       />
-      <div>
+      <div className="qlistcont1">
         {quesList.map((ques) => (
+          <div className="qlist-card">
           <QuestionItem
             title={ques.title}
             author={ques.author}
@@ -37,6 +41,7 @@ function QuestionList() {
             dislikes={ques.dislikes}
             quesId={ques.quesId}
           />
+          </div>
         ))}
       </div>
     </div>
