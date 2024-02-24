@@ -32,7 +32,7 @@ function Rooms() {
         value={filter}
         placeholder="Search rooms..."
       />
-      <div>
+      <div className="cont1">
         {rooms.map((room) => (
           <div key={room.roomId} className="room-card">
             
