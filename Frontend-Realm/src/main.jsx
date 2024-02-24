@@ -21,6 +21,7 @@ import PrivateChat from "./components/PersonalChat/PrivateChat.jsx"
 import GlobalChat from "./components/GlobalChat/GlobalChat.jsx";
 import CollegeChat from "./components/CollegeChat/CollegeChat.jsx"
 import QuestionPage from "./components/QuestionPage/QuestionPage.jsx";
+import AnswerList from "./components/QuestionPage/AnswerList/AnswerList.jsx"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,7 @@ const router = createBrowserRouter(
       <Route path="globalchat" element={<GlobalChat/>} />
       <Route path="collegechat" element={<CollegeChat />} />
       <Route path="question" element={<QuestionPage />}/>
+      <Route path="answer" element={<AnswerList />} />
     </Route>
   )
 );
