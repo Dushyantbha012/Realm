@@ -35,9 +35,36 @@ const roomSchema = new mongoose.Schema({
       default: [],
     },
   ],
+  private: {
+    type: Boolean,
+    default:false
+  }
 });
+
+const questionSchema = new mongoose.Schema({
+  title:String,
+  author : String,
+  likes: Number,
+  dislikes : Number,
+  answers : [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref : "Answer,",
+      default:[],
+    },
+  ],
+})
+
+const answerSchema = new mongoose.Schema({
+  content:String,
+  author:String,
+  likes:Number,
+  dislikes:Number
+})
 
 const User = mongoose.model("User", userSchema);
 const Room = mongoose.model("Room", roomSchema);
+const Answer = mongoose.model("Answer", answerSchema);
+const Question = mongoose.model("Question", questionSchema);
 
-module.exports = { User, Room };
+module.exports = { User, Room, Answer,Question};
