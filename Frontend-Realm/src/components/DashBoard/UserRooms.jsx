@@ -34,7 +34,7 @@ function UserRooms() {
           placeholder="Search rooms..."
         />
       </div>
-      <div>
+      <div className="cont1">
 
         {rooms.map((room) => (
           <div key={room.roomId} className="userroom-card">
