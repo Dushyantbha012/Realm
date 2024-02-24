@@ -63,7 +63,7 @@
   font-weight: 500;
   position: relative;
   top: 0;
-  animation: slide 12s steps(4) infinite;
+  animation: slide 10s steps(0.2) infinite;
 }
 @keyframes slide {
   100%{
@@ -85,7 +85,7 @@
   width: 100%;
   background: white;
   border-left: 2px solid white;
-  animation: typing 3s steps(10) infinite;
+  animation: typing 5s steps(70) infinite;
 }
 @keyframes typing {
   40%, 60%{
