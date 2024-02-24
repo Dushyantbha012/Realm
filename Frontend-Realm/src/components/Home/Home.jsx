@@ -1,8 +1,106 @@
 import React from 'react'
+import './homepage.css'
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigateTo =useNavigate();
   return (
-    <div className='text-3xl'>Home</div>
+    
+    <div className='home-container'>
+    <div className='animation'>
+
+    <div class="wrapper">
+
+    <ul class="dynamic-txts">
+      <li><span>Welcome To Realm !! </span></li>
+    </ul>
+  </div>
+    </div>
+    <section class="text-gray-600 body-font">
+  <div class="container px-5 py-24 mx-auto">
+    <div class="flex flex-wrap w-full mb-20 flex-col items-center text-center">
+      <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">What we provide?</h1>
+      <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Realm is a social media platform build specifically for college students.</p>
+    </div>
+    <div class="flex flex-wrap -m-4">
+      <div class="xl:w-1/3 md:w-1/2 p-4">
+        <div class="border border-gray-200 p-6 rounded-lg">
+          <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Immersive Experience</h2>
+          <p class="leading-relaxed text-base">Realm merges the features of discord, reddit and twitter into one application</p>
+        </div>
+      </div>
+      <div class="xl:w-1/3 md:w-1/2 p-4">
+        <div class="border border-gray-200 p-6 rounded-lg">
+          <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+              <circle cx="6" cy="6" r="3"></circle>
+              <circle cx="6" cy="18" r="3"></circle>
+              <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Promotes Interaction</h2>
+          <p class="leading-relaxed text-base">Promotes interaction between students inside and outside college</p>
+        </div>
+      </div>
+      <div class="xl:w-1/3 md:w-1/2 p-4">
+        <div class="border border-gray-200 p-6 rounded-lg">
+          <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <h2 class="text-lg text-gray-900 font -medium title-font mb-2">Unique ID</h2>
+          <p class="leading-relaxed text-base">Unique public and private ID is assigned to each student</p>
+        </div>
+      </div>
+      <div class="xl:w-1/3 md:w-1/2 p-4">
+        <div class="border border-gray-200 p-6 rounded-lg">
+          <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1zM4 22v-7"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Organizing Events</h2>
+          <p class="leading-relaxed text-base">Organizing events are made alot easier by creating separate chatrooms for an event.</p>
+        </div>
+      </div>
+      <div class="xl:w-1/3 md:w-1/2 p-4">
+        <div class="border border-gray-200 p-6 rounded-lg">
+          <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Hasle-Free</h2>
+          <p class="leading-relaxed text-base">Very user friendly and easy interface to manage activities.</p>
+        </div>
+      </div>
+      <div class="xl:w-1/3 md:w-1/2 p-4">
+        <div class="border border-gray-200 p-6 rounded-lg">
+          <div class="w-10 h-10 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500 mb-4">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-6 h-6" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </svg>
+          </div>
+          <h2 class="text-lg text-gray-900 font-medium title-font mb-2">Security</h2>
+          <p class="leading-relaxed text-base">The conversations between students and faculty stay secure in an indegenious database.</p>
+        </div>
+      </div>
+      <div className='button-container'>
+
+      <div onClick={()=>navigateTo("signup")} className="signup-button">Sign Up Today</div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+</div>
   )
 }
 
