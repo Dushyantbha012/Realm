@@ -41,7 +41,7 @@ Welcome to our College Social Media Project! This project aims to provide a plat
    ```bash
    cd Backend
    npm install
-   cd
+   cd ../
    cd Frontend
    npm install
 
