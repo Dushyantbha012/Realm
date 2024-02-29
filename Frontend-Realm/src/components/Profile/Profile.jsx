@@ -21,7 +21,8 @@ function Profile() {
         });
         setProfile(res.data);
         localStorage.setItem("username", res.data.username);
-        localStorage.setItem("college",res.data.college)
+        localStorage.setItem("college",res.data.college);
+        localStorage.setItem("email",res.data.email);
       } catch (error) {
         console.error("Error fetching profile:", error);
       }
